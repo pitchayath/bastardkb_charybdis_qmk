@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ ├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
        KC_NO,                 KC_TRNS,                   KC_X,            KC_C,            KC_V,               KC_B,                         KC_N,                 KC_M,            KC_COMM,         KC_DOT,            KC_SLSH,              KC_TRNS,
   // ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ ├─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
-                                                                          KC_TRNS,         KC_TRNS,            KC_TRNS,                      KC_TRNS,              KC_TRNS
+                                                                          KC_TRNS,         KC_TRNS,            MO(LAYER_MAC_NAV),                      KC_TRNS,              KC_TRNS
   //                                                  ╰───────────────────────────────────────────────────────────────────────────────╯ ╰──────────────────────────────────────────╯
   ),
 
@@ -236,32 +236,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      switch(keycode) {
           case TOG_MAC_LANG:
                if (record->event.pressed) {
-                    register_code(KC_LCTL);
-                    tap_code(KC_SPC);
-                    unregister_code(KC_LCTL);
+                    // register_code(KC_LCTL);
+                    // tap_code(KC_SPC);
+                    // unregister_code(KC_LCTL);
 
-                    // tap_code16(LCTL(KC_SPC));
+                    // tap_code16_delay(LCTL(KC_SPC), 10);
                     if (IS_LAYER_ON(LAYER_MAC_EN)) {
-                         layer_move(LAYER_MAC_TH);
+                        layer_move(LAYER_MAC_TH);
                     } else {
-                         layer_move(LAYER_MAC_EN);
+                        layer_move(LAYER_MAC_EN);
                     }
+                    register_code(KC_LCTL);
+                    tap_code_delay(KC_SPC, 10);
+               } else {
+                    unregister_code(KC_LCTL);
                }
-               return false; // true will send also tab koycode as mapped in based layer
+               return false;
           case TOG_WIN_LANG:
                if (record->event.pressed) {
-                    register_code(KC_LGUI);
-                    tap_code(KC_SPC);
-                    unregister_code(KC_LGUI);
+                    // register_code(KC_LGUI);
+                    // tap_code(KC_SPC);
+                    // unregister_code(KC_LGUI);
 
-                    // tap_code16(LGUI(KC_SPC));
+                    // tap_code16_delay(LGUI(KC_SPC), 10);
                     if (IS_LAYER_ON(LAYER_WIN_EN)) {
-                         layer_move(LAYER_WIN_TH);
+                        layer_move(LAYER_WIN_TH);
                     } else {
-                         layer_move(LAYER_WIN_EN);
+                        layer_move(LAYER_WIN_EN);
                     }
+                    register_code(KC_LGUI);
+                    tap_code_delay(KC_SPC, 10);
+               } else {
+                    unregister_code(KC_LGUI);
                }
-               return false; // true will send also tab koycode as mapped in based layer
+               return false;
           case MAC_LOCK_SCREEN:
                if (record->event.pressed) {
                     set_mods(MOD_LCTL | MOD_LGUI);

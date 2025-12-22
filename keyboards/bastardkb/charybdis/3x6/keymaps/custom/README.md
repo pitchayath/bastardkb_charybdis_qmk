@@ -2,7 +2,7 @@
 
 ## compile and flash firmware using command line
 
-1. `qmk flash -c -kb bastardkb/charybdis/3x6/v2/splinky_3 -km custom -e CONVERT_TO=elite_pi`
+1. `qmk flash -c -kb bastardkb/charybdis/3x6 -km custom`
 2. unplug the usb-c
 3. unplug the trs connection
 4. plug the usb-c
@@ -11,7 +11,7 @@
 
 ## compile, then flash firmware by copy/paste
 
-1. `qmk compile -c -kb bastardkb/charybdis/3x6/v2/splinky_3 -km custom`
+1. `qmk compile -c -kb bastardkb/charybdis/3x6 -km custom`
 2. unplug the usb-c
 3. unplug the trs connection
 4. plug the usb-c
