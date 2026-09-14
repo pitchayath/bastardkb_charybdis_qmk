@@ -38,7 +38,8 @@ enum charybdis_keymap_layers {
 
 #ifdef POINTING_DEVICE_ENABLE
     /** \brief Automatically enable sniping-mode on the pointer layer. */
-    #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_TBALL
+    /* #define CHARYBDIS_AUTO_SNIPING_ON_LAYER LAYER_TBALL */
+    #undef CHARYBDIS_AUTO_SNIPING_ON_LAYER
 
     #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
     static uint16_t auto_pointer_layer_timer = 0;
